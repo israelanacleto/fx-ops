@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: fx-ops
+  datasource:
+    url: jdbc:h2:mem:fxops
+    username: sa
+    password: ""
+  h2:
+    console:
+      enabled: true
+  jpa:
+    open-in-view: false
