@@ -81,8 +81,8 @@ Console do H2 disponível em `/h2-console`
 - [x] Setup, configuração e health check
 - [x] Domínio JPA com relacionamento one-to-many e seed
 - [x] Otimização de fetch (problema N+1, EntityGraph)
-- [ ] Camada de use cases
-- [ ] Máquina de estados no domínio
+- [x] Camada de use cases
+- [x] Máquina de estados no domínio
 - [ ] API REST com DTOs e validação
 - [ ] Idempotência na criação de operações
 - [ ] Tratamento global de erros (Problem Details, RFC 7807)

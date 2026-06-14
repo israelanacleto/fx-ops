@@ -54,6 +54,30 @@ public class Operation {
         party.setOperation(this);
     }
 
+    public void confirm(){
+        if (this.state != OperationState.CREATED){
+            throw new InvalidOperationStateException(
+                    "Operação só pode ser confirmada a partir de CREATED. Estado atual: " + this.state);
+        }
+        this.state = OperationState.CONFIRMED;
+    }
+
+    public void settle(){
+        if (this.state != OperationState.CONFIRMED){
+            throw new InvalidOperationStateException(
+                    "Operação só pode ser liquidada a partir de CONFIRMED. Estado atual: " + this.state);
+        }
+        this.state = OperationState.SETTLED;
+    }
+
+    public void cancel(){
+        if(this.state == OperationState.SETTLED || this.state == OperationState.CANCELLED){
+            throw new InvalidOperationStateException(
+                    "Operação em estado " + this.state + " não pode ser cancelada.");
+        }
+        this.state = OperationState.CANCELLED;
+    }
+
     public Long getId() { return id; }
     public String getCurrencyPair() { return currencyPair; }
     public BigDecimal getAmount() { return amount; }
