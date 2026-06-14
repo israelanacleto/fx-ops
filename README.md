@@ -83,7 +83,7 @@ Console do H2 disponível em `/h2-console`
 - [x] Otimização de fetch (problema N+1, EntityGraph)
 - [x] Camada de use cases
 - [x] Máquina de estados no domínio
-- [ ] API REST com DTOs e validação
+- [x] API REST com DTOs e validação
 - [ ] Idempotência na criação de operações
 - [ ] Tratamento global de erros (Problem Details, RFC 7807)
 - [ ] Autenticação JWT com Spring Security

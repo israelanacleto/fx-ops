@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface OperationRepository extends JpaRepository<Operation, Long> {
 
@@ -15,4 +16,7 @@ public interface OperationRepository extends JpaRepository<Operation, Long> {
     @EntityGraph(attributePaths = "parties")
     @Query("SELECT o FROM Operation o")
     List<Operation> findAllWithParties();
+
+    @EntityGraph(attributePaths = "parties")
+    Optional<Operation> findWithPartiesById(Long id);
 }

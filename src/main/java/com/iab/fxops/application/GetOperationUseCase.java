@@ -7,19 +7,17 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ConfirmOperationUseCase {
+public class GetOperationUseCase {
 
-    private final OperationRepository operationRepository;
+    private final  OperationRepository operationRepository;
 
-    public ConfirmOperationUseCase(OperationRepository operationRepository){
+    public GetOperationUseCase(OperationRepository operationRepository) {
         this.operationRepository = operationRepository;
     }
 
-    @Transactional
-    public Operation execute(Long id){
-        Operation operation = operationRepository.findWithPartiesById(id)
+    @Transactional(readOnly = true)
+    public Operation execute(Long id) {
+        return operationRepository.findWithPartiesById(id)
                 .orElseThrow(() -> new OperationNotFoundException(id));
-        operation.confirm();
-        return operationRepository.save(operation);
     }
 }

@@ -1,0 +1,41 @@
+### Listar operações
+GET http://localhost:8080/operations
+
+### Detalhar operação 1
+GET http://localhost:8080/operations/1
+
+### Criar operação
+POST http://localhost:8080/operations
+Content-Type: application/json
+
+{
+  "currencyPair": "USD/BRL",
+  "amount": 50000,
+  "rate": 5.43,
+  "side": "BUY",
+  "parties": [
+    { "name": "Banco X", "document": "11222333000144", "role": "BUYER" },
+    { "name": "Fundo Y", "document": "55666777000188", "role": "SELLER" }
+  ]
+}
+
+### Confirmar operação 1
+POST http://localhost:8080/operations/1/confirm
+
+### Liquidar operação 1
+POST http://localhost:8080/operations/1/settle
+
+### Cancelar operação 2
+POST http://localhost:8080/operations/2/cancel
+
+### Criar operação inválida (amount negativo, sem parties)
+POST http://localhost:8080/operations
+Content-Type: application/json
+
+{
+  "currencyPair": "",
+  "amount": -10,
+  "rate": 5.43,
+  "side": "BUY",
+  "parties": []
+}
