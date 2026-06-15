@@ -38,8 +38,9 @@ public class OperationController {
     }
 
     @PostMapping
-    public ResponseEntity<OperationResponse> create(@Valid @RequestBody CreateOperationRequest request){
-        Operation created = createOperation.execute(request.toCommand());
+    public ResponseEntity<OperationResponse> create(@RequestHeader(value = "Idempotency-Key", required = false) String idempotencyKey,
+            @Valid @RequestBody CreateOperationRequest request){
+        Operation created = createOperation.execute(request.toCommand(), idempotencyKey);
         OperationResponse body = OperationResponse.from(created);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")

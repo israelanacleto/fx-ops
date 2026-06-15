@@ -39,3 +39,36 @@ Content-Type: application/json
   "side": "BUY",
   "parties": []
 }
+
+
+### Criar com idempotency key (primeira vez, deve criar = 201)
+POST http://localhost:8080/operations
+Content-Type: application/json
+Idempotency-Key: abc-123
+
+{
+  "currencyPair": "JPY/BRL",
+  "amount": 30000,
+  "rate": 0.038,
+  "side": "BUY",
+  "parties": [
+    { "name": "Banco Z", "document": "11222333000144", "role": "BUYER" },
+    { "name": "Fundo W", "document": "55666777000188", "role": "SELLER" }
+  ]
+}
+
+### Reenviar a MESMA key (deve devolver a mesma operação, sem criar nova)
+POST http://localhost:8080/operations
+Content-Type: application/json
+Idempotency-Key: abc-123
+
+{
+  "currencyPair": "JPY/BRL",
+  "amount": 30000,
+  "rate": 0.038,
+  "side": "BUY",
+  "parties": [
+    { "name": "Banco Z", "document": "11222333000144", "role": "BUYER" },
+    { "name": "Fundo W", "document": "55666777000188", "role": "SELLER" }
+  ]
+}

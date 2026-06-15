@@ -84,7 +84,7 @@ Console do H2 disponível em `/h2-console`
 - [x] Camada de use cases
 - [x] Máquina de estados no domínio
 - [x] API REST com DTOs e validação
-- [ ] Idempotência na criação de operações
+- [x] Idempotência na criação de operações
 - [ ] Tratamento global de erros (Problem Details, RFC 7807)
 - [ ] Autenticação JWT com Spring Security
 - [ ] Testes unitários e de integração
