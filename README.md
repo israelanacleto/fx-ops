@@ -85,7 +85,7 @@ Console do H2 disponível em `/h2-console`
 - [x] Máquina de estados no domínio
 - [x] API REST com DTOs e validação
 - [x] Idempotência na criação de operações
-- [ ] Tratamento global de erros (Problem Details, RFC 7807)
+- [x] Tratamento global de erros (Problem Details, RFC 7807)
 - [ ] Autenticação JWT com Spring Security
 - [ ] Testes unitários e de integração
 - [ ] Documentação OpenAPI (Swagger) e Actuator

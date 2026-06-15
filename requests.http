@@ -72,3 +72,25 @@ Idempotency-Key: abc-123
     { "name": "Fundo W", "document": "55666777000188", "role": "SELLER" }
   ]
 }
+
+
+### [Bloco 8] Erro 404 - operação inexistente
+GET http://localhost:8080/operations/999
+
+### [Bloco 8] Erro 409 - confirmar operação 2 (1a vez, deve dar 200 CONFIRMED)
+POST http://localhost:8080/operations/2/confirm
+
+### [Bloco 8] Erro 409 - confirmar operação 2 DE NOVO (agora deve dar 409)
+POST http://localhost:8080/operations/2/confirm
+
+### [Bloco 8] Erro 422 - payload invalido (campos quebrados)
+POST http://localhost:8080/operations
+Content-Type: application/json
+
+{
+  "currencyPair": "",
+  "amount": -10,
+  "rate": 5.43,
+  "side": "BUY",
+  "parties": []
+}
