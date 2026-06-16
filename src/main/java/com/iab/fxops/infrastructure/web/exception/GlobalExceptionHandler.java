@@ -3,6 +3,7 @@ package com.iab.fxops.infrastructure.web.exception;
 import com.iab.fxops.domain.InvalidOperationStateException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -41,6 +42,12 @@ public class GlobalExceptionHandler {
         }
         problem.setProperty("errors", errors);
 
+        return problem;
+    }
+
+    @ExceptionHandler(BadCredentialsException.class) ProblemDetail handleBadCredentials(BadCredentialsException ex){
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, "Usuário ou senha inválidos.");
+        problem.setTitle("Falha na autenticação");
         return problem;
     }
 }

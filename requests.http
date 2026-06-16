@@ -1,3 +1,6 @@
+### Health
+GET http://localhost:8080/health
+
 ### Listar operações
 GET http://localhost:8080/operations
 
@@ -94,3 +97,39 @@ Content-Type: application/json
   "side": "BUY",
   "parties": []
 }
+
+### [Bloco 9] Login (credencial correta, deve dar 200 com token)
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "trader",
+  "password": "trader123"
+}
+
+### [Bloco 9] Login (senha errada, deve dar 401)
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "trader",
+  "password": "senha-errada"
+}
+
+### [Bloco 9] Login e captura do token numa variavel
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "trader",
+  "password": "trader123"
+}
+
+> {% client.global.set("token", response.body.token); %}
+
+### [Bloco 9] Operations SEM token (deve dar 401 agora)
+GET http://localhost:8080/operations
+
+### [Bloco 9] Operations COM token (deve dar 200)
+GET http://localhost:8080/operations
+Authorization: Bearer {{token}}
