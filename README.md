@@ -87,5 +87,5 @@ Console do H2 disponível em `/h2-console`
 - [x] Idempotência na criação de operações
 - [x] Tratamento global de erros (Problem Details, RFC 7807)
 - [x] Autenticação JWT com Spring Security
-- [ ] Testes unitários e de integração
+- [x] Testes unitários e de integração
 - [ ] Documentação OpenAPI (Swagger) e Actuator
