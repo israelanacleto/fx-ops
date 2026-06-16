@@ -19,3 +19,12 @@ spring:
 jwt:
   secret: "T8beW7mfVmj66EftHzWzxdl1P0whw3D7sqFVWH30xGjQmuTj5sRzrf3oYcSxYVLVI7kCt3MakS4lCpEfL2JElw993cF381iVexvC88KZ6MSGavwwOksQcMLv2hSYmrpveHswg1d7CLST7a3KzRL8STSFZhhQAoW7ebkeILljsOYEg3S7ZI8hQRj2JOyqWovhZyWqzJJCUgr8p4CT8MtLtSWqD4gr1Sv7LyyWfbFWmvwatwxkFjMKO8tBOq8G4Z499bWX0iB1daHljbiLMbBHK4Y3PFRIVk1c562qJ6isGG5EEPUKCFCAKDXb9GR7mJza6JmrTBzwD7EvdA5KBiAH4iYWzrkjV7rXR94PdAeUuSj7ejftDhjAhr25uAcB"
   expiration-minutes: 60
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
