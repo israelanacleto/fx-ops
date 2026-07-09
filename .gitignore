@@ -34,3 +34,6 @@ build/
 
 ### Notas locais de estudo ###
 docs/
+
+### Estado local do board-loop (loop.json/loop-state.json) ###
+.claude/
